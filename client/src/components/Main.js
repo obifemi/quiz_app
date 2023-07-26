@@ -1,5 +1,6 @@
 import React, {useRef} from 'react'
 import { Link } from 'react-router-dom';
+import '../styles/Main.css';
 
 export default function Main() {
     const inputRef = useRef(null);
@@ -16,7 +17,7 @@ export default function Main() {
         </ol>
 
         <form id="form">
-            <input ref={inputRef} type="text" placeholder='Username' />
+            <input ref={inputRef} type="text" placeholder='Username' className='userid' />
         </form>
         <div className="start">
             <Link className='btn' to={'quiz'}>Start Quiz</Link>
