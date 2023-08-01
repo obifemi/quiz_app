@@ -6,10 +6,10 @@ import {useSelector} from 'react-redux'
 
 export default function Quiz() {
 
-  const {questions} = useSelector(state => state)
+  const state = useSelector(state => state)
 
   useEffect(()=>{
-    console.log('state',questions.queue)
+    console.log('state: ', state)
   })
 
   function onNext(){
