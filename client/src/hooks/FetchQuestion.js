@@ -1,8 +1,10 @@
 /*  fetch questions and set value to store*/
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useDispatch} from 'react'
 import data from '../Database/data'
+import * as Action from '../redux/question_reducer'
 
 export const useFetchQuestion = () =>{
+const dispatch = useDispatch 
 const [getData, setGetData] = useState({isLoading: false, apiData: [], serverError: null})
 
 } 
@@ -13,9 +15,22 @@ useEffect (()=>{
 
     (async()=>{
         try {
-            
+            let question = await data
+
+            if (question.length>0){
+                setGetData (prev => ({...prev, isLoading: false} ))
+                setGetData (prev => ({...prev, apiData: question} ))
+
+                /* dispatch an action to store */
+
+
+                
+
+            }
         } catch (error) {
-            
+            setGetData (prev => ({...prev, isLoading: false} ))
+            setGetData (prev => ({...prev, serverError: true} ))
+
         }
     })()
 
