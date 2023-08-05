@@ -7,7 +7,7 @@ export const useFetchQuestion = () =>{
 const dispatch = useDispatch 
 const [getData, setGetData] = useState({isLoading: false, apiData: [], serverError: null})
 
-} 
+
 useEffect (()=>{
     setGetData (prev => ({...prev, isLoading: true} ))
 
@@ -23,10 +23,14 @@ useEffect (()=>{
 
                 /* dispatch an action to store */
 
-
-                
+                dispatch(Action.startExamAction(question))
 
             }
+            else {
+                throw new Error('No question is available')
+            }
+            
+
         } catch (error) {
             setGetData (prev => ({...prev, isLoading: false} ))
             setGetData (prev => ({...prev, serverError: true} ))
@@ -34,4 +38,9 @@ useEffect (()=>{
         }
     })()
 
-})
+},[dispatch])
+
+return[getData,setGetData]
+
+
+} 

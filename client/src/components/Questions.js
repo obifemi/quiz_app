@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import data from '../Database/data'
 
+/*Custom Hook*/
+import {useFetchQuestion} from '../hooks/FetchQuestion'
+
 export default function Questions() {
 
   const question = data[0]
